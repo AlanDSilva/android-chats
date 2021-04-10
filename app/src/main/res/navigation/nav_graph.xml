@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_GroupFragment_to_ChatFragment"
             app:destination="@id/ChatFragment" />
+        <action
+            android:id="@+id/action_GroupFragment_to_SettingsFragments"
+            app:destination="@id/SettingsFragments" />
     </fragment>
     <fragment
         android:id="@+id/ChatFragment"
@@ -26,5 +29,24 @@
         <argument
             android:name="name"
             app:argType="string" />
+        <action
+            android:id="@+id/action_ChatFragment_to_SettingsFragments"
+            app:destination="@id/SettingsFragments" />
     </fragment>
+    <fragment
+        android:id="@+id/SettingsFragments"
+        android:name="fi.alandasilva.chat.fragments.settings.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings">
+        <action
+            android:id="@+id/action_settingsFragment2_to_login"
+            app:destination="@id/LoginFragment"
+            app:popUpTo="@id/SettingsFragments"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/LoginFragment"
+        android:name="fi.alandasilva.chat.fragments.login.Login"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
 </navigation>
