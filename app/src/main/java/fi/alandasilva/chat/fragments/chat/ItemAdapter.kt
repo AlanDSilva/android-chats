@@ -27,6 +27,7 @@ class ItemAdapter(private val dataset: ArrayList<Message>)
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         holder.binding.contentTextView.text = dataset[position].content
-        holder.binding.authorTextView.text = dataset[position].sender
+        holder.binding.authorTextView.text = "Sent by "+dataset[position].sender + " at" +
+                dataset[position].time
     }
 }
