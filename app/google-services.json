@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "565385199662",
+    "firebase_url": "https://android-chat-579d4-default-rtdb.firebaseio.com",
+    "project_id": "android-chat-579d4",
+    "storage_bucket": "android-chat-579d4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:565385199662:android:dd6c257db25b30990ddfbf",
+        "android_client_info": {
+          "package_name": "fi.alandasilva.chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "565385199662-6e827qdn1sadb1je5t25bjndn823o1sm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDS1kiIJfCnN-KU4CS6miDD-XWhklf45Pc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "565385199662-6e827qdn1sadb1je5t25bjndn823o1sm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
