@@ -46,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/LoginFragment"
-        android:name="fi.alandasilva.chat.fragments.login.Login"
+        android:name="fi.alandasilva.chat.fragments.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
 </navigation>

@@ -36,7 +36,10 @@ class SettingsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.user.observe(viewLifecycleOwner) {user ->
             if(user != null){
-                Log.d(TAG, "There is a user!")
+                binding.textView.text = user.email
+                binding.logoutButton.setOnClickListener {
+                    viewModel.logout()
+                }
             } else {
                 val action = SettingsFragmentDirections.actionSettingsFragment2ToLogin()
                 findNavController().navigate(action)
