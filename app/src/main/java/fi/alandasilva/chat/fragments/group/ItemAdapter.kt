@@ -1,13 +1,13 @@
 package fi.alandasilva.chat.fragments.group
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import fi.alandasilva.chat.databinding.ItemGroupBinding
 import fi.alandasilva.chat.model.Group
 
-class ItemAdapter(private val dataset: ArrayList<Group>)
+class ItemAdapter(private val dataset: ArrayList<Group>, private val navController: NavController)
     : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>(){
 
     private val TAG = "GroupFragmentItemAdapter"
@@ -30,7 +30,8 @@ class ItemAdapter(private val dataset: ArrayList<Group>)
         holder.binding.titleTextView.text = dataset[position].name
         holder.binding.membersTextView.text = dataset[position].photoUrl
         holder.binding.cardView.setOnClickListener {
-            Log.d(TAG, "CardView clicked!")
+            val action = GroupFragmentDirections.actionGroupFragmentToChatFragment(dataset[position].id, dataset[position].name)
+            navController.navigate(action)
         }
     }
 }

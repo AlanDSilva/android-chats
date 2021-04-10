@@ -18,10 +18,13 @@
     <fragment
         android:id="@+id/ChatFragment"
         android:name="fi.alandasilva.chat.fragments.chat.ChatFragment"
-        android:label="Chat"
+        android:label="{name}"
         tools:layout="@layout/fragment_chat">
-        <action
-            android:id="@+id/action_ChatFragment_to_GroupFragment"
-            app:destination="@id/GroupFragment" />
+        <argument
+            android:name="id"
+            app:argType="string" />
+        <argument
+            android:name="name"
+            app:argType="string" />
     </fragment>
 </navigation>
