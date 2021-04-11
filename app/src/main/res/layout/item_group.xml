@@ -17,13 +17,14 @@
             android:layout_height="75dp"
             android:src="@drawable/ic_launcher_foreground"/>
 
-            <TextView
-                android:id="@+id/title_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:textAppearance="?attr/textAppearanceHeadline6"
-                android:text="Group Name"/>
+        <TextView
+            android:id="@+id/title_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/lobster_two"
+            android:text="Group Name"
+            android:textAppearance="?attr/textAppearanceHeadline6" />
 
 
     </LinearLayout>
