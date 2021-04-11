@@ -8,6 +8,7 @@ import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import fi.alandasilva.chat.R
 import fi.alandasilva.chat.databinding.FragmentGroupBinding
+import fi.alandasilva.chat.fragments.login.LoginDialogFragment
 import fi.alandasilva.chat.viewmodel.ChatViewModel
 
 /**
@@ -42,6 +43,12 @@ class GroupFragment : Fragment() {
         //Observe the current state of messages
         viewModel.groups.observe(viewLifecycleOwner) {groups ->
             binding.recyclerView.adapter = ItemAdapter(groups, findNavController())
+        }
+
+        binding.fab.setOnClickListener {
+            val newGroupDialogFragment =
+                NewGroupDialogFragment()
+            newGroupDialogFragment.show(childFragmentManager, "signup")
         }
     }
 
