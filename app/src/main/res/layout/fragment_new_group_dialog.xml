@@ -32,7 +32,7 @@
             android:inputType="textEmailAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/spacing_normal"
             android:layout_marginLeft="4dp"
             android:layout_marginRight="4dp"
             android:layout_marginBottom="4dp"
@@ -51,7 +51,7 @@
             android:layout_marginTop="4dp"
             android:layout_marginLeft="4dp"
             android:layout_marginRight="4dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="@dimen/spacing_normal"
             android:fontFamily="sans-serif"
             android:hint="Description"/>
     </com.google.android.material.textfield.TextInputLayout>
