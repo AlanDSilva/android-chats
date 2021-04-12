@@ -1,13 +1,11 @@
 package fi.alandasilva.chat.fragments.login
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.activityViewModels
-import fi.alandasilva.chat.viewmodel.ChatViewModel
+import androidx.fragment.app.viewModels
 import fi.alandasilva.chat.databinding.FragmentLoginDialogBinding
 
 private const val ARG_DIALOG_TYPE = "dialog_type"
@@ -17,7 +15,7 @@ class LoginDialogFragment : DialogFragment() {
 
     private var param: String?= null
     //View Model
-    private val viewModel: ChatViewModel by activityViewModels()
+    private val viewModel: LoginViewModel by viewModels()
 
     private var _binding: FragmentLoginDialogBinding? = null
     val binding get() = _binding!!
@@ -46,7 +44,6 @@ class LoginDialogFragment : DialogFragment() {
 
         //Set click listeners
         binding.cancelButton.setOnClickListener{
-            viewModel.logout()
             dialog?.cancel()
         }
         binding.loginButton.setOnClickListener{
@@ -58,7 +55,6 @@ class LoginDialogFragment : DialogFragment() {
                 viewModel.signup(email, password)
             }
             dialog?.cancel()
-
         }
     }
 

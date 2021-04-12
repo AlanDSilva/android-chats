@@ -8,16 +8,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.navArgs
 import fi.alandasilva.chat.databinding.FragmentChatBinding
-import fi.alandasilva.chat.viewmodel.ChatViewModel
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
 class ChatFragment : Fragment() {
+    private val TAG = "ChatFragment"
 
     //Navigation arguments
     val args: ChatFragmentArgs by navArgs()
@@ -27,7 +27,7 @@ class ChatFragment : Fragment() {
     private val binding get() = _binding!!
 
     //ViewModel
-    private val viewModel: ChatViewModel by activityViewModels()
+    private val viewModel: ChatViewModel by viewModels()
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -56,6 +56,7 @@ class ChatFragment : Fragment() {
             }
             return@setOnKeyListener false
         }
+
     }
 
     fun View.hideKeyboard() {

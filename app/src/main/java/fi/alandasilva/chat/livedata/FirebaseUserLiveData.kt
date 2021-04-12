@@ -1,4 +1,4 @@
-package fi.alandasilva.chat.viewmodel
+package fi.alandasilva.chat.livedata
 
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth

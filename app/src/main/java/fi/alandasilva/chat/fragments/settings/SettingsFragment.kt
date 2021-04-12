@@ -1,17 +1,14 @@
 package fi.alandasilva.chat.fragments.settings
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
-import fi.alandasilva.chat.R
 import fi.alandasilva.chat.databinding.FragmentSettingsBinding
-import fi.alandasilva.chat.viewmodel.ChatViewModel
 
 class SettingsFragment : Fragment() {
     private val TAG = "SettingsFragment"
@@ -21,7 +18,7 @@ class SettingsFragment : Fragment() {
     private val binding get() = _binding!!
 
     //ViewModel
-    private val viewModel: ChatViewModel by activityViewModels()
+    private val viewModel: SettingsViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

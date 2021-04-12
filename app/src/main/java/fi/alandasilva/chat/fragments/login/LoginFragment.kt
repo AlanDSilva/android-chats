@@ -5,11 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import fi.alandasilva.chat.databinding.FragmentLoginBinding
-import fi.alandasilva.chat.viewmodel.ChatViewModel
 
 /**
  * A simple [Fragment] subclass.
@@ -24,7 +23,7 @@ class LoginFragment : Fragment() {
     private val binding get() = _binding!!
 
     //ViewModel
-    private val viewModel: ChatViewModel by activityViewModels()
+    private val viewModel: LoginViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

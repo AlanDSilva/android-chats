@@ -1,4 +1,4 @@
-package fi.alandasilva.chat.viewmodel
+package fi.alandasilva.chat.livedata
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
@@ -6,37 +6,39 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
-import fi.alandasilva.chat.model.Group
+import fi.alandasilva.chat.model.Message
 
-class GroupsLiveData(private val groupsRef: DatabaseReference): MutableLiveData<ArrayList<Group>>() {
-    private val TAG = "GroupsLiveData"
+class MessagesLiveData(private var messagesRef: DatabaseReference)
+    : MutableLiveData<ArrayList<Message>>() {
+    private val TAG = "MessagesLiveData"
 
     private var listenerRegistration = DataEventListener()
-    private var groups = arrayListOf<Group>()
+    private var messages = arrayListOf<Message>()
+
 
     private inner class DataEventListener: ValueEventListener {
         override fun onCancelled(error: DatabaseError) {
             Log.d(TAG, "Error: ${error.toException()}")
+
         }
 
         override fun onDataChange(snapshot: DataSnapshot) {
-            groups.clear()
+            messages.clear()
             snapshot.children.forEach{child ->
-                groups.add(Group.from(child.value as HashMap<String, String>))
+                messages.add(Message.from(child.value as HashMap<String, String>))
             }
-            value = groups
-            Log.d(TAG, "Got some groups")
-
+            setValue(messages)
+            Log.d(TAG, "Got some messages")
         }
     }
 
     override fun onActive() {
         super.onActive()
-        groupsRef.addValueEventListener(listenerRegistration)
+        messagesRef.addValueEventListener(listenerRegistration)
     }
 
     override fun onInactive() {
         super.onInactive()
-        groupsRef.removeEventListener(listenerRegistration)
+        messagesRef.removeEventListener(listenerRegistration)
     }
 }

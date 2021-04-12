@@ -7,23 +7,21 @@ import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.activityViewModels
-import fi.alandasilva.chat.viewmodel.ChatViewModel
+import androidx.fragment.app.viewModels
 import fi.alandasilva.chat.databinding.FragmentNewGroupDialogBinding
 import java.io.ByteArrayOutputStream
 
 
 class NewGroupDialogFragment : DialogFragment() {
-    private val TAG = "LoginDialogFragment"
+    private val TAG = "NewGroupDialogFragment"
     private val REQUEST_IMAGE_FILE = 1
 
     //View Model
-    private val viewModel: ChatViewModel by activityViewModels()
+    private val viewModel: GroupViewModel by viewModels()
 
     private var _binding: FragmentNewGroupDialogBinding? = null
     val binding get() = _binding!!
@@ -45,11 +43,11 @@ class NewGroupDialogFragment : DialogFragment() {
         //Set click listeners
         binding.imageView.setOnClickListener { choosePic() }
         binding.cancelButton.setOnClickListener{ dialog?.cancel()}
-        binding.saveButton.setOnClickListener { savePic() }
+        binding.saveButton.setOnClickListener { saveGroup() }
 
     }
 
-    private fun savePic() {
+    private fun saveGroup() {
         val bitmap = (binding.imageView.drawable as BitmapDrawable).bitmap
         val baos = ByteArrayOutputStream()
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
@@ -58,6 +56,7 @@ class NewGroupDialogFragment : DialogFragment() {
         val name = binding.nameEdit.text.toString()
 
         viewModel.addGroup(data, binding.nameEdit.text.toString())
+        dialog?.cancel()
     }
 
     private fun choosePic() {

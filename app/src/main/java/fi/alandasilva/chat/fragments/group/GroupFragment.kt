@@ -3,13 +3,11 @@ package fi.alandasilva.chat.fragments.group
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import fi.alandasilva.chat.R
 import fi.alandasilva.chat.databinding.FragmentGroupBinding
-import fi.alandasilva.chat.fragments.login.LoginDialogFragment
-import fi.alandasilva.chat.viewmodel.ChatViewModel
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -21,7 +19,7 @@ class GroupFragment : Fragment() {
     private val binding get() = _binding!!
 
     //ViewModel
-    private val viewModel: ChatViewModel by activityViewModels()
+    private val viewModel: GroupViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
