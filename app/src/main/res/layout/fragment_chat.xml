@@ -16,7 +16,8 @@
         android:scrollbars="vertical"
         android:layout_marginLeft="@dimen/spacing_normal"
         android:layout_marginRight="@dimen/spacing_normal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_chat_right"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
