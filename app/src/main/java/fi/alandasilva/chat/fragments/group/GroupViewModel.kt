@@ -1,7 +1,10 @@
 package fi.alandasilva.chat.fragments.group
 
+import android.provider.ContactsContract
 import android.util.Log
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -19,7 +22,12 @@ class GroupViewModel: ViewModel() {
     // GroupFragment
     val groupsRef = database.getReference("groups")
     private var _groups = GroupsLiveData(groupsRef)
+    private var query =  MutableLiveData<String>()
     val groups: LiveData<ArrayList<Group>> get() = _groups
+
+    fun setQuery(q: String) {
+        query.value = q
+    }
 
     fun addGroup(data: ByteArray, name: String){
         var str = name.replace("\\s".toRegex(), "")
@@ -42,5 +50,11 @@ class GroupViewModel: ViewModel() {
             }
     }
 
+    fun searchDatabase(query: String): ArrayList<Group> {
+        val searchResults = _groups.value?.filter{
+            it.name.contains(query, true)
+        }
+        return searchResults as ArrayList<Group>
+    }
 
 }

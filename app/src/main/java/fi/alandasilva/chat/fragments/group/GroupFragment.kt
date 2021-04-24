@@ -3,8 +3,10 @@ package fi.alandasilva.chat.fragments.group
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import fi.alandasilva.chat.R
@@ -13,7 +15,7 @@ import fi.alandasilva.chat.databinding.FragmentGroupBinding
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class GroupFragment : Fragment() {
+class GroupFragment : Fragment(), SearchView.OnQueryTextListener{
 
     override fun onResume() {
         super.onResume()
@@ -59,6 +61,11 @@ class GroupFragment : Fragment() {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.menu_layout, menu)
+
+        val search = menu?.findItem(R.id.action_search)
+        val searchView = search?.actionView as SearchView
+        searchView?.isSubmitButtonEnabled = true
+        searchView?.setOnQueryTextListener(this)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -76,4 +83,25 @@ class GroupFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        if(query != null) {
+            searchDatabase(query)
+        }
+        return true
+    }
+
+    override fun onQueryTextChange(query: String?): Boolean {
+        if(query != null) {
+            searchDatabase(query)
+        }
+        return true
+    }
+
+    private fun searchDatabase(query: String) {
+        val groups = viewModel.searchDatabase(query)
+        binding.recyclerView.adapter = ItemAdapter(groups, findNavController())
+    }
+
+
 }
