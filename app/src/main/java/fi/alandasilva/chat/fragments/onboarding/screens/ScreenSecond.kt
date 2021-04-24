@@ -20,15 +20,6 @@ import fi.alandasilva.chat.databinding.FragmentScreenSecondBinding
  */
 class ScreenSecond : Fragment() {
 
-    override fun onResume() {
-        super.onResume()
-        (activity as AppCompatActivity).supportActionBar?.hide()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        (activity as AppCompatActivity).supportActionBar?.show()
-    }
 
     private var _binding: FragmentScreenSecondBinding? = null
     private val binding get() = _binding!!

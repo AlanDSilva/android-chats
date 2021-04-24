@@ -2,6 +2,7 @@ package fi.alandasilva.chat.fragments.group
 
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
@@ -13,6 +14,11 @@ import fi.alandasilva.chat.databinding.FragmentGroupBinding
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class GroupFragment : Fragment() {
+
+    override fun onResume() {
+        super.onResume()
+        (activity as AppCompatActivity).supportActionBar?.show()
+    }
 
     //View Binding
     private var _binding: FragmentGroupBinding? = null

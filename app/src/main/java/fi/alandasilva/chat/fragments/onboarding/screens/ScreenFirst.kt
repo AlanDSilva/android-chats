@@ -21,15 +21,6 @@ class ScreenFirst : Fragment() {
     private var _binding: FragmentScreenFirstBinding? = null
     private val binding get() = _binding!!
 
-    override fun onResume() {
-        super.onResume()
-        (activity as AppCompatActivity).supportActionBar?.hide()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        (activity as AppCompatActivity).supportActionBar?.show()
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
