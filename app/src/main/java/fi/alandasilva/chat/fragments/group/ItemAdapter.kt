@@ -32,6 +32,7 @@ class ItemAdapter(private val dataset: ArrayList<Group>, private val navControll
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val group = dataset[position]
+        holder.binding.categoryTextView.text = group.category
         holder.binding.titleTextView.text = group.name
         holder.binding.cardView.setOnClickListener {
             val action = GroupFragmentDirections.actionGroupFragmentToChatFragment(

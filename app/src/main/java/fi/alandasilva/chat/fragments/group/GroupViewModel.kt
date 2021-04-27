@@ -29,9 +29,11 @@ class GroupViewModel: ViewModel() {
         query.value = q
     }
 
-    fun addGroup(data: ByteArray, name: String){
+    fun addGroup(data: ByteArray, name: String, category: String){
         var str = name.replace("\\s".toRegex(), "")
         val storageRef = storage.reference.child("images/${str}")
+
+        Log.d(TAG, "Categort is ${category}")
 
         var uploadTask = storageRef.putBytes(data)
         uploadTask
@@ -41,7 +43,7 @@ class GroupViewModel: ViewModel() {
                     storageRef.downloadUrl.addOnCompleteListener {task->
                         Log.d(TAG, "URI succesful with: ${task.result}")
                         val key = groupsRef.push().key!!
-                        val newGroup = Group(key, name, task.result.toString())
+                        val newGroup = Group(key, name, task.result.toString(), category)
                         groupsRef.child(key).setValue(newGroup)
                     }
                 } else {

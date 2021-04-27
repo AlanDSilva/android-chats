@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.ServerValue
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import fi.alandasilva.chat.livedata.MessagesLiveData
@@ -36,5 +37,12 @@ class ChatViewModel: ViewModel() {
         val userEmail = if (auth.currentUser != null) auth.currentUser.email else "Unknown"
         messagesRef.push().setValue(Message(message, userEmail, formatted))
         Log.i("ChatViewModel", "add message function")
+    }
+
+    fun addUser(id: String){
+        database.getReference("groups/${id}/nrUsers").setValue(ServerValue.increment(1))
+    }
+    fun removeUser(id: String){
+        database.getReference("groups/${id}/nrUsers").setValue(ServerValue.increment(-1))
     }
 }

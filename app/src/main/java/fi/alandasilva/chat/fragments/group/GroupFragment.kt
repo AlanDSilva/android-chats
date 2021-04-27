@@ -1,6 +1,7 @@
 package fi.alandasilva.chat.fragments.group
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -9,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.chip.Chip
 import fi.alandasilva.chat.R
 import fi.alandasilva.chat.databinding.FragmentGroupBinding
 
@@ -55,6 +57,11 @@ class GroupFragment : Fragment(), SearchView.OnQueryTextListener{
             val newGroupDialogFragment =
                 NewGroupDialogFragment()
             newGroupDialogFragment.show(childFragmentManager, "signup")
+        }
+
+        // On checked filters
+        binding.chipGroup.setOnCheckedChangeListener { group, checkedID ->
+            getView()?.findViewById<Chip>(checkedID)?.text = "Hello"
         }
     }
 

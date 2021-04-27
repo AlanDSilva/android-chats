@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.navArgs
@@ -28,6 +29,18 @@ class ChatFragment : Fragment() {
 
     //ViewModel
     private val viewModel: ChatViewModel by viewModels()
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.addUser(args.id)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        viewModel.removeUser(args.id)
+
+
+    }
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,

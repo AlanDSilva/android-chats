@@ -10,8 +10,10 @@ import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
+import fi.alandasilva.chat.R
 import fi.alandasilva.chat.databinding.FragmentNewGroupDialogBinding
 import java.io.ByteArrayOutputStream
 
@@ -40,11 +42,26 @@ class NewGroupDialogFragment : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupArrayAdapter()
         //Set click listeners
         binding.imageView.setOnClickListener { choosePic() }
         binding.cancelButton.setOnClickListener{ dialog?.cancel()}
         binding.saveButton.setOnClickListener { saveGroup() }
 
+    }
+
+    private fun setupArrayAdapter() {
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter.createFromResource(
+                requireContext(),
+                R.array.categories_array,
+                android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            // Specify the layout to use when the list of choices appears
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            // Apply the adapter to the spinner
+            binding.categoriesSpinner.adapter = adapter
+        }
     }
 
     private fun saveGroup() {
@@ -55,7 +72,7 @@ class NewGroupDialogFragment : DialogFragment() {
         val data = baos.toByteArray()
         val name = binding.nameEdit.text.toString()
 
-        viewModel.addGroup(data, binding.nameEdit.text.toString())
+        viewModel.addGroup(data, binding.nameEdit.text.toString(), binding.categoriesSpinner.selectedItem as String)
         dialog?.cancel()
     }
 
