@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="categories_array">
+        <item>News</item>
+        <item>TV</item>
+        <item>Cinema</item>
+        <item>Programming</item>
+        <item>Gaming</item>
+    </string-array>
+</resources>

@@ -1,10 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".fragments.group.GroupFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+<!--<HorizontalScrollView-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content">-->
+<!--    <com.google.android.material.chip.ChipGroup-->
+<!--        android:id="@+id/chip_group"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_width="match_parent"-->
+<!--        app:singleLine="true"-->
+<!--        app:singleSelection="true">-->
+<!--        <com.google.android.material.chip.Chip-->
+<!--            android:id="@+id/chip_1"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            style="@style/Widget.MaterialComponents.Chip.Choice"-->
+<!--            android:checked="false"-->
+<!--            android:checkable="true"-->
+<!--            android:text="Android"/>-->
+
+<!--        <com.google.android.material.chip.Chip-->
+<!--            android:id="@+id/chip_2"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            style="@style/Widget.MaterialComponents.Chip.Choice"-->
+<!--            android:checked="false"-->
+<!--            android:text="iOS"/>-->
+
+<!--        <com.google.android.material.chip.Chip-->
+<!--            android:id="@+id/chip_3"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            style="@style/Widget.MaterialComponents.Chip.Choice"-->
+<!--            android:checked="false"-->
+<!--            android:text="TV"/>-->
+
+<!--        <com.google.android.material.chip.Chip-->
+<!--            android:id="@+id/chip_4"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            style="@style/Widget.MaterialComponents.Chip.Choice"-->
+<!--            android:checked="false"-->
+<!--            android:text="Movies"/>-->
+
+<!--        <com.google.android.material.chip.Chip-->
+<!--            android:id="@+id/chip_5"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            style="@style/Widget.MaterialComponents.Chip.Choice"-->
+<!--            android:checked="false"-->
+<!--            android:text="Programming"/>-->
+
+<!--    </com.google.android.material.chip.ChipGroup>-->
+<!--</HorizontalScrollView>-->
+
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
@@ -14,6 +74,7 @@
         android:layout_marginRight="@dimen/spacing_normal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_group"/>
+    </LinearLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
@@ -22,4 +83,4 @@
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/spacing_normal"
             app:srcCompat="@drawable/ic_baseline_add_24" />
-</FrameLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
