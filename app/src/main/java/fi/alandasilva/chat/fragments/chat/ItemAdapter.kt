@@ -51,12 +51,18 @@ class ItemAdapter(private val dataset: ArrayList<Message>)
 
     override fun getItemViewType(position: Int): Int {
         val user = Firebase.auth.currentUser
-        if(dataset[position].sender == user.email) {
+        if (user != null) {
+            if(dataset[position].sender == user.email) {
+                return MSG_TYPE_RIGHT
+                Log.d(TAG ,"Will return RIGHT")
+            } else {
+                return MSG_TYPE_LEFT
+                Log.d(TAG ,"Will return LEFT")
+            }
+        } else {
             return MSG_TYPE_RIGHT
             Log.d(TAG ,"Will return RIGHT")
-        } else {
-            return MSG_TYPE_LEFT
-            Log.d(TAG ,"Will return LEFT")
         }
+
     }
 }
