@@ -60,9 +60,9 @@ class GroupFragment : Fragment(), SearchView.OnQueryTextListener{
         }
 
         // On checked filters
-        binding.chipGroup.setOnCheckedChangeListener { group, checkedID ->
-            getView()?.findViewById<Chip>(checkedID)?.text = "Hello"
-        }
+//        binding.chipGroup.setOnCheckedChangeListener { group, checkedID ->
+//            getView()?.findViewById<Chip>(checkedID)?.text = "Hello"
+//        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

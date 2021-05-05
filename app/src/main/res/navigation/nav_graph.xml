@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     android:label="Chat"
-    app:startDestination="@id/GroupFragment">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/GroupFragment"
